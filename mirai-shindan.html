@@ -992,6 +992,22 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 
 /* Error */
 .error-box { background: rgba(200,0,0,0.05); border-color: rgba(200,0,0,0.2); color: #CC0000; }
+
+/* ════════════════════
+   FORCE HORIZONTAL TEXT
+════════════════════ */
+* {
+  writing-mode: horizontal-tb !important;
+  text-orientation: mixed !important;
+}
+
+.msg-bubble {
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  white-space: normal !important;
+  width: auto !important;
+  max-width: 80% !important;
+}
 </style>
 </head>
 <body>
