@@ -3,34 +3,34 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MIRAI — Find Your Path</title>
+<title>アナタノミライハ</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&family=DM+Mono:wght@400;500&display=swap');
 
 :root {
-  --bg: #0D0D0D;
-  --surface: #161616;
-  --surface2: #1E1E1E;
-  --border: #2A2A2A;
-  --ink: #F0EDE8;
-  --ink-muted: #7A7672;
-  --ink-dim: #3A3836;
-  --accent: #C8A96E;
-  --accent-soft: rgba(200,169,110,0.12);
-  --accent-glow: rgba(200,169,110,0.06);
-  --red: #C86E6E;
-  --green: #6EC896;
-  --blue: #6E96C8;
+  --bg: #FFFFFF;
+  --surface: #F8F8F8;
+  --surface2: #F0F0F0;
+  --border: #000000;
+  --ink: #FFFFFF;
+  --ink-muted: #888888;
+  --ink-dim: #BBBBBB;
+  --accent: #0504AA;
+  --accent-soft: rgba(5,4,170,0.08);
+  --accent-glow: rgba(5,4,170,0.04);
+  --red: #CC0000;
+  --green: #006600;
+  --blue: #0504AA;
   --radius: 16px;
   --radius-sm: 10px;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:'Zen Kaku Gothic New',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body{background:var(--bg);color:#1a1a1a;font-family:'Zen Kaku Gothic New',sans-serif;min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 
-/* ── Noise texture ── */
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.6}
+/* ── Subtle grid texture ── */
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,0,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
 
 .shell{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px 80px}
 
@@ -125,7 +125,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 .stance-title{
   font-family:'Playfair Display',serif;
-  font-size:clamp(28px,5vw,38px);
+  font-size:clamp(47px,8vw,65px);
   margin-bottom:12px;
 }
 
@@ -548,7 +548,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   text-transform:uppercase;
   margin-bottom:16px;
 }
-.result-title{font-family:'Playfair Display',serif;font-size:clamp(28px,6vw,40px);line-height:1.2;color:var(--ink);margin-bottom:10px}
+.result-title{font-family:'Playfair Display',serif;font-size:clamp(47px,10vw,68px);line-height:1.2;color:var(--ink);margin-bottom:10px}
 .result-sub{font-size:14px;color:var(--ink-muted);line-height:1.7;font-weight:300}
 
 .rblock{
@@ -690,7 +690,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 #screen-password{text-align:center}
 .pw-title{
   font-family:'Playfair Display',serif;
-  font-size:clamp(28px,5vw,38px);
+  font-size:clamp(47px,8vw,65px);
   margin-bottom:12px;
 }
 .pw-sub{font-size:13px;color:var(--ink-muted);margin-bottom:40px;font-weight:300}
@@ -719,6 +719,272 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
   font-family:'DM Mono',monospace;
   letter-spacing:1px;
 }
+
+/* ════════════════════
+   LIGHT THEME OVERRIDES
+════════════════════ */
+.blue-text {
+  color: #0504AA;
+  text-shadow: none;
+}
+
+.top-title {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(52px, 10vw, 96px);
+  font-weight: 400;
+  line-height: 1;
+  color: #1a1a1a;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+
+.top-title .char {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.top-title .char:hover {
+  transform: translateY(-4px);
+}
+
+.top-title .char-black {
+  color: #1a1a1a;
+  text-shadow:
+    2px 2px 0 #555,
+    4px 4px 0 #444,
+    6px 6px 0 #333,
+    8px 8px 0 #222,
+    10px 10px 0 #111,
+    12px 12px 20px rgba(0,0,0,0.35);
+}
+
+.top-title .char-blue {
+  color: #0504AA;
+  text-shadow:
+    2px 2px 0 #0303AA,
+    4px 4px 0 #0202AA,
+    6px 6px 0 #020288,
+    8px 8px 0 #010166,
+    10px 10px 0 #010144,
+    12px 12px 20px rgba(5,4,170,0.45);
+}
+
+.top-wordmark {
+  color: #999;
+  letter-spacing: 4px;
+}
+
+.top-desc {
+  color: #444;
+  font-size: 25px;
+  line-height: 2;
+}
+
+.top-tags .tag {
+  border-color: #000;
+  color: #333;
+  background: #fff;
+}
+
+.btn-primary {
+  background: #0504AA;
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(5,4,170,0.25);
+}
+.btn-primary:hover {
+  background: #0403CC;
+  box-shadow: 0 8px 32px rgba(5,4,170,0.35);
+}
+
+.pw-title {
+  font-family: 'Dela Gothic One', sans-serif;
+  font-size: clamp(36px, 8vw, 64px);
+  font-weight: 400;
+  letter-spacing: 2px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  margin-bottom: 24px;
+}
+
+.pw-title .char-black {
+  color: #1a1a1a;
+  text-shadow:
+    2px 2px 0 #555,
+    4px 4px 0 #444,
+    6px 6px 0 #333,
+    8px 8px 0 #222,
+    10px 10px 0 #111,
+    12px 12px 16px rgba(0,0,0,0.3);
+}
+
+.pw-title .char-blue {
+  color: #0504AA;
+  text-shadow:
+    2px 2px 0 #0303AA,
+    4px 4px 0 #0202AA,
+    6px 6px 0 #020288,
+    8px 8px 0 #010166,
+    10px 10px 0 #010144,
+    12px 12px 16px rgba(5,4,170,0.4);
+}
+
+.pw-sub { color: #666; }
+
+.pw-input {
+  background: #fff;
+  border: 1.5px solid #000;
+  color: #1a1a1a;
+}
+.pw-input:focus { border-color: #0504AA; }
+.pw-input::placeholder { color: #bbb; }
+
+/* Cards and surfaces */
+.quiz-card {
+  background: #fff;
+  border: 1.5px solid #000;
+  box-shadow: 4px 4px 0px #000;
+}
+.quiz-card::before { background: linear-gradient(90deg, #0504AA, #4B4BCC); }
+
+.q-cat { color: #999; }
+.q-text { color: #1a1a1a; }
+
+.opt {
+  background: #f8f8f8;
+  border: 1.5px solid transparent;
+  color: #333;
+}
+.opt:hover { border-color: #0504AA; background: rgba(5,4,170,0.05); color: #1a1a1a; }
+.opt.sel { border-color: #0504AA; background: rgba(5,4,170,0.08); color: #1a1a1a; }
+.opt-k { border-color: #ddd; color: #999; }
+.opt.sel .opt-k { background: #0504AA; border-color: #0504AA; color: #fff; }
+
+.btn-back { color: #999; }
+.btn-back:hover { color: #333; }
+.btn-next { background: #0504AA; }
+.btn-next.ready:hover { background: #0403CC; box-shadow: 0 4px 16px rgba(5,4,170,0.3); }
+
+.prog-fill { background: #0504AA; }
+.q-badge { background: rgba(5,4,170,0.08); color: #0504AA; }
+
+/* Stance screen */
+.stance-title { color: #1a1a1a; font-weight: 700; }
+.stance-sub { color: #666; }
+.stance-btn {
+  background: #fff;
+  border: 1.5px solid #000;
+  box-shadow: 3px 3px 0px #000;
+  transition: all 0.15s;
+}
+.stance-btn:hover {
+  border-color: #0504AA;
+  box-shadow: 3px 3px 0px #0504AA;
+  background: rgba(5,4,170,0.03);
+}
+.stance-icon { background: #f0f0f0; }
+.stance-icon svg { stroke: #0504AA; }
+.stance-label { color: #1a1a1a; }
+.stance-note { color: #777; }
+
+/* Target screen */
+.target-title { color: #1a1a1a; font-weight: 700; }
+.target-sub { color: #666; }
+.target-section-label { color: #bbb; }
+.target-btn {
+  background: #fff;
+  border: 1.5px solid #000;
+  box-shadow: 3px 3px 0px #000;
+  transition: all 0.15s;
+}
+.target-btn:hover {
+  border-color: #0504AA;
+  box-shadow: 3px 3px 0px #0504AA;
+  background: rgba(5,4,170,0.03);
+}
+.target-text { color: #1a1a1a; }
+.target-arrow { color: #0504AA; }
+
+/* Result screen */
+.result-badge { background: rgba(0,100,0,0.08); border-color: rgba(0,100,0,0.2); color: #006600; }
+.result-title { color: #1a1a1a; }
+.result-sub { color: #666; }
+
+.rblock {
+  background: #fff;
+  border: 1.5px solid #000;
+  box-shadow: 4px 4px 0px #000;
+}
+.rblock.type-p::before { background: #0504AA; }
+.rblock.type-b::before { background: #0504AA; }
+.rblock.type-g::before { background: #006600; }
+.rblock.type-o::before { background: #CC0000; }
+
+.rblock-label { color: #999; }
+.rl-dot.dot-p { background: #0504AA; }
+.rl-dot.dot-b { background: #0504AA; }
+.rl-dot.dot-g { background: #006600; }
+.rl-dot.dot-o { background: #CC0000; }
+
+.analysis { color: #333; }
+.trait { border-color: rgba(5,4,170,0.3); color: #0504AA; }
+
+.career-row { background: #f8f8f8; border: 1px solid #e0e0e0; }
+.career-num { color: #ccc; }
+.career-name { color: #1a1a1a; }
+.career-note { color: #666; }
+.career-pct { color: #0504AA; }
+
+.uni-row { background: #f8f8f8; border: 1px solid #e0e0e0; }
+.uni-icon { background: rgba(0,100,0,0.08); }
+.uni-name { color: #1a1a1a; }
+.uni-dept { color: #666; }
+
+.advice-box { background: linear-gradient(135deg, rgba(5,4,170,0.05), rgba(0,100,0,0.05)); color: #333; }
+
+.btn-interview { background: #0504AA; color: #fff; }
+.btn-interview:hover { box-shadow: 0 8px 24px rgba(5,4,170,0.3); }
+.btn-retry { border-color: #ddd; color: #999; }
+.btn-retry:hover { border-color: #000; color: #333; }
+
+/* Interview screen */
+.iv-header { border-bottom-color: #e0e0e0; background: #fff; }
+.iv-avatar { background: rgba(5,4,170,0.08); border-color: #0504AA; }
+.iv-avatar svg { stroke: #0504AA; }
+.iv-name { color: #1a1a1a; }
+.iv-status { color: #006600; }
+.iv-messages { background: #fafafa; }
+.msg-ai .msg-bubble { background: #fff; border-color: #e0e0e0; color: #1a1a1a; }
+.msg-user .msg-bubble { background: rgba(5,4,170,0.08); border-color: rgba(5,4,170,0.2); color: #1a1a1a; }
+.msg-ai .msg-avatar { background: rgba(5,4,170,0.08); border-color: #0504AA; }
+.msg-user .msg-avatar { background: #f0f0f0; border-color: #ddd; }
+.msg-ai .msg-avatar svg { stroke: #0504AA; }
+.msg-user .msg-avatar svg { stroke: #999; }
+.msg-typing { background: #fff; border-color: #e0e0e0; }
+.typing-dot { background: #ccc; }
+.iv-input-area { border-top-color: #e0e0e0; background: #fff; }
+.iv-textarea { background: #f8f8f8; border-color: #ddd; color: #1a1a1a; }
+.iv-textarea:focus { border-color: #0504AA; }
+.iv-textarea::placeholder { color: #bbb; }
+.iv-send { background: #0504AA; }
+.iv-hint { color: #ccc; }
+
+/* Loading */
+.loader-ring { border-color: #e0e0e0; border-top-color: #0504AA; }
+.load-title { color: #1a1a1a; }
+.load-sub { color: #999; }
+
+/* Error */
+.error-box { background: rgba(200,0,0,0.05); border-color: rgba(200,0,0,0.2); color: #CC0000; }
 </style>
 </head>
 <body>
@@ -726,8 +992,7 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 <!-- PASSWORD -->
 <div id="screen-password" class="screen active">
-  <div class="top-wordmark">MIRAI SHINDAN — 2025</div>
-  <div class="pw-title">Enter Password</div>
+  <div class="pw-title"><span class="blue-text">アナタ</span>ノ<span class="blue-text">ミライ</span>ハ</div>
   <div class="pw-sub">このサービスはパスワードが必要です</div>
   <input class="pw-input" id="pw-input" type="password" placeholder="パスワードを入力" onkeydown="if(event.key==='Enter')checkPassword()"/>
   <div class="pw-error" id="pw-error"></div>
@@ -739,12 +1004,9 @@ body::before{content:'';position:fixed;inset:0;background-image:url("data:image/
 
 <!-- TOP -->
 <div id="screen-top" class="screen">
-  <div class="top-wordmark">MIRAI SHINDAN — 2025</div>
-  <div class="top-title">Find Your</div>
-  <div class="top-title-sub">True Path.</div>
+  <h1 class="top-title"><span class="char char-blue">ア</span><span class="char char-blue">ナ</span><span class="char char-blue">タ</span><span class="char char-black">ノ</span><span class="char char-blue">ミ</span><span class="char char-blue">ラ</span><span class="char char-blue">イ</span><span class="char char-black">ハ</span></h1>
   <p class="top-desc">
-    建前ではなく、本音を問う。<br>
-    あなたの価値観・思考・行動パターンを深く分析し、<br>
+    建前ではなく、本音を問い、<br>
     あなただけの職業と学校の方向性を導き出す。
   </p>
   <div class="top-tags">
