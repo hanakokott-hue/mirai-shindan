@@ -443,6 +443,11 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   font-size:14px;
   line-height:1.8;
   font-weight:300;
+  word-break:break-word;
+  overflow-wrap:break-word;
+  white-space:normal;
+  writing-mode:horizontal-tb;
+  text-orientation:mixed;
 }
 .msg-ai .msg-bubble{
   background:var(--surface);
@@ -504,6 +509,8 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   line-height:1.6;
   outline:none;
   transition:border-color 0.2s;
+  writing-mode:horizontal-tb;
+  text-orientation:mixed;
 }
 .iv-textarea:focus{border-color:var(--accent)}
 .iv-textarea::placeholder{color:var(--ink-dim)}
