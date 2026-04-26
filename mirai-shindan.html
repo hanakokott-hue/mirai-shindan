@@ -1006,7 +1006,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 <div id="screen-top" class="screen">
   <h1 class="top-title"><span class="char char-blue">ア</span><span class="char char-blue">ナ</span><span class="char char-blue">タ</span><span class="char char-black">ノ</span><span class="char char-blue">ミ</span><span class="char char-blue">ラ</span><span class="char char-blue">イ</span><span class="char char-black">ハ</span></h1>
   <p class="top-desc">
-    建前ではなく、本音を問い、<br>
+    本音を問い、あなたを知る。<br>
     あなただけの職業と学校の方向性を導き出す。
   </p>
   <div class="top-tags">
@@ -1023,7 +1023,6 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 <!-- STANCE -->
 <div id="screen-stance" class="screen">
   <div class="stance-title">あなたの今の立場は？</div>
-  <div class="stance-sub">質問の内容がこれに合わせて変わります</div>
   <div class="stance-grid">
     <button class="stance-btn" onclick="setStance('highschool')">
       <div class="stance-icon">
@@ -1557,8 +1556,13 @@ function renderQ() {
 
   if (q.free) {
     const ta = document.createElement('textarea');
-    ta.style.cssText = 'width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-family:\'Zen Kaku Gothic New\',sans-serif;font-size:14px;color:var(--ink);resize:vertical;min-height:100px;outline:none;transition:border-color 0.2s;line-height:1.7';
+    ta.style.cssText = 'width:100%;background:#fff;border:1.5px solid #000;border-radius:10px;padding:14px 16px;font-family:\'Zen Kaku Gothic New\',sans-serif;font-size:14px;color:#1a1a1a;resize:vertical;min-height:100px;outline:none;transition:border-color 0.2s;line-height:1.7;pointer-events:auto;cursor:text;user-select:text;-webkit-user-select:text;';
     ta.placeholder = '自由に書いてください...';
+    ta.setAttribute('contenteditable', 'true');
+    ta.style.userSelect = 'text';
+    ta.style.webkitUserSelect = 'text';
+    ta.style.pointerEvents = 'auto';
+    ta.style.cursor = 'text';
     ta.value = answers[currentQ] || '';
     ta.oninput = () => {
       answers[currentQ] = ta.value;
@@ -1699,7 +1703,7 @@ ${summary}
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 4000,
@@ -1936,7 +1940,7 @@ async function sendMessage() {
 
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 2000,
