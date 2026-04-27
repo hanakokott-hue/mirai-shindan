@@ -32,7 +32,7 @@ body{background:var(--bg);color:#1a1a1a;font-family:'Zen Kaku Gothic New',sans-s
 /* ── Subtle grid texture ── */
 body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,0,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
 
-.shell{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px 80px}
+.shell{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px 80px;writing-mode:horizontal-tb !important;}
 
 /* ── Screens ── */
 .screen{display:none;width:100%;max-width:620px}
@@ -379,8 +379,9 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   display:none;
   width:100%;
   max-width:680px;
+  writing-mode:horizontal-tb !important;
 }
-#screen-interview.active{display:flex;flex-direction:column;height:100vh;padding:0}
+#screen-interview.active{display:flex;flex-direction:column;height:100vh;padding:0;writing-mode:horizontal-tb !important;}
 
 .iv-header{
   padding:24px 32px;
@@ -412,6 +413,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   display:flex;
   flex-direction:column;
   gap:24px;
+  writing-mode:horizontal-tb !important;
 }
 
 .iv-messages::-webkit-scrollbar{width:4px}
