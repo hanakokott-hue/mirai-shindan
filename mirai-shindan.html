@@ -420,7 +420,7 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .iv-messages::-webkit-scrollbar-track{background:transparent}
 .iv-messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:100px}
 
-.msg{display:flex;flex-direction:row;gap:14px;animation:msgIn 0.4s cubic-bezier(0.22,1,0.36,1) both;writing-mode:horizontal-tb !important;}
+.msg{display:flex;flex-direction:row;gap:14px;animation:msgIn 0.4s cubic-bezier(0.22,1,0.36,1) both;writing-mode:horizontal-tb !important;width:100%;}
 @keyframes msgIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
 
 .msg-ai{align-items:flex-start}
@@ -439,7 +439,9 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
 .msg-user .msg-avatar svg{stroke:var(--ink-muted)}
 
 .msg-bubble{
-  max-width:80%;
+  max-width:75%;
+  min-width:200px;
+  width:auto;
   padding:16px 20px;
   border-radius:16px;
   font-size:14px;
@@ -448,8 +450,9 @@ body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(
   word-break:break-word;
   overflow-wrap:break-word;
   white-space:normal;
-  writing-mode:horizontal-tb;
-  text-orientation:mixed;
+  writing-mode:horizontal-tb !important;
+  text-orientation:mixed !important;
+  display:block !important;
 }
 .msg-ai .msg-bubble{
   background:var(--surface);
