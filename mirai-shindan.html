@@ -1934,7 +1934,7 @@ function appendAIBubble(text, msgs) {
   div.className = 'msg msg-ai';
   div.innerHTML = `
     <div class="msg-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
-    <div class="msg-bubble">${esc(text)}</div>`;
+    <div class="msg-bubble" style="writing-mode:horizontal-tb !important;word-break:break-word;">${esc(text)}</div>`;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 
@@ -1947,7 +1947,7 @@ function addUserMsg(text) {
   div.className = 'msg msg-user';
   div.innerHTML = `
     <div class="msg-avatar"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg></div>
-    <div class="msg-bubble">${esc(text)}</div>`;
+    <div class="msg-bubble" style="writing-mode:horizontal-tb !important;word-break:break-word;">${esc(text)}</div>`;
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
   ivHistory.push({ role: 'user', content: text });
