@@ -524,6 +524,94 @@ input[type="range"] { width: 100%; accent-color: var(--blue); cursor: pointer; }
 }
 .fade-in { animation: fadeUp 0.4s ease both; }
 
+/* ==================== CONSENT SCREEN ==================== */
+#screen-consent {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+.consent-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--blue);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.consent-heading {
+  font-family: 'Noto Serif JP', serif;
+  font-size: clamp(1.5rem, 5vw, 2.2rem);
+  font-weight: 900;
+  line-height: 1.35;
+  margin-bottom: 28px;
+  color: var(--black);
+}
+
+.consent-box {
+  border: 1.5px solid var(--border);
+  border-radius: var(--r);
+  background: rgba(255,255,255,0.85);
+  padding: 28px 28px;
+  margin-bottom: 32px;
+}
+
+.consent-box p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: #333;
+  margin-bottom: 16px;
+}
+.consent-box p:last-child { margin-bottom: 0; }
+
+.consent-highlight {
+  background: rgba(5,4,170,0.06);
+  border-left: 3px solid var(--blue);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: var(--black);
+}
+
+.consent-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.consent-yes {
+  flex: 1;
+  padding: 16px 24px;
+  border-radius: 999px;
+  border: none;
+  background: var(--blue);
+  color: #fff;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+  letter-spacing: 0.04em;
+}
+.consent-yes:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.consent-no {
+  padding: 16px 28px;
+  border-radius: 999px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.15s;
+}
+.consent-no:hover { border-color: var(--black); color: var(--black); }
+
 @media print {
   body::before { display: none; }
   .result-actions { display: none; }
@@ -571,6 +659,34 @@ input[type="range"] { width: 100%; accent-color: var(--blue); cursor: pointer; }
   </div>
 </div>
 
+<!-- CONSENT (①体のことが心配 専用) -->
+<div id="screen-consent" class="screen">
+  <div class="fade-in">
+    <div class="consent-eyebrow">はじめにご確認ください</div>
+    <div class="consent-heading">この診断でお伝えできること、<br>できないことがあります</div>
+    <div class="consent-box">
+      <p>「体のことが心配で、将来が不安」という悩みに向き合うこの診断は、身体的な制約や病気を抱えながら働くことを考えているあなたのために設計されています。</p>
+      <div class="consent-highlight">
+        ✅ お伝えできること<br>
+        ・あなたに合いそうな<strong>働き方・環境</strong>の方向性<br>
+        ・仕事を探すときの<strong>キーワードやヒント</strong><br>
+        ・あなたの強みや、大切にしていること
+      </div>
+      <div class="consent-highlight" style="border-left-color:#bbb;background:rgba(0,0,0,0.03)">
+        ❌ お伝えが難しいこと<br>
+        ・「この職業が向いています」という<strong>断言</strong><br>
+        ・職場環境の保証（同じ職種でも会社によって大きく異なります）<br>
+        ・医療的なアドバイス
+      </div>
+      <p>この診断は、あなたの「最初の一歩」を一緒に考えるためのものです。断定ではなく、可能性を広げるための参考としてご活用ください。</p>
+    </div>
+    <div class="consent-btns">
+      <button class="consent-no" onclick="consentNo()">← 悩みを選び直す</button>
+      <button class="consent-yes" onclick="consentYes()">理解しました、始めます →</button>
+    </div>
+  </div>
+</div>
+
 <!-- QUESTION -->
 <div id="screen-question" class="screen">
   <div class="progress-wrap">
@@ -589,21 +705,8 @@ input[type="range"] { width: 100%; accent-color: var(--blue); cursor: pointer; }
   </div>
 </div>
 
-<!-- API KEY -->
-<div id="screen-apikey" class="screen">
-  <div class="api-heading">AI分析を開始します</div>
-  <div class="api-desc">Anthropic APIキーを入力してください。<br>あなたの回答をもとに、未来の方向性を提案します。</div>
-  <div class="api-field-wrap">
-    <input type="password" class="api-field" id="api-input" placeholder="sk-ant-..." />
-    <button class="api-eye" onclick="toggleEye()">👁</button>
-  </div>
-  <div class="api-note-text">APIキーはブラウザ外に送信されません</div>
-  <div class="api-error-msg" id="api-error"></div>
-  <div class="api-btns">
-    <button class="api-back-btn" onclick="apiBack()">← 戻る</button>
-    <button class="api-go-btn" onclick="runAnalysis()">分析開始 →</button>
-  </div>
-</div>
+<!-- API KEY (非表示・自動遷移) -->
+<div id="screen-apikey" class="screen" style="display:none"></div>
 
 <!-- RESULT -->
 <div id="screen-result" class="screen">
@@ -707,6 +810,57 @@ const SCENARIO_CONFIGS = {
   7: { cats:{ A1:3, A3:1, A4:1, A5:2, B:2, D:1, E:2, G:2 } },
 };
 
+// ① 体のことが心配・将来が不安 — 固定47問
+const TYPE1_QUESTIONS = [
+  { category:"C", q:"現在、医師から何らかの診断を受けていますか？", type:"choice", opts:["はい","いいえ","現在検査・通院中"] },
+  { category:"C", q:"医師から「やってはいけない」と言われていることはありますか？具体的に教えてください。", type:"text" },
+  { category:"C", q:"通院の頻度はどのくらいですか？", type:"choice", opts:["週1回以上","月2〜3回","月1回程度","数ヶ月に1回","現在は通院していない"] },
+  { category:"C", q:"体調が安定しない日（調子の悪い日）は、1ヶ月のうちどのくらいありますか？", type:"choice", opts:["ほぼ毎日","週に数日","月に数日","ほとんどない"] },
+  { category:"C", q:"目（視覚）に関して、仕事に影響する困りごとはありますか？", type:"multicheck", opts:["細かい文字が読みにくい","画面を長時間見られない","光がまぶしい","視野が狭い","ほとんど見えない","特にない"] },
+  { category:"C", q:"耳（聴覚）に関して、仕事に影響する困りごとはありますか？", type:"multicheck", opts:["聞こえにくい（片耳・両耳）","電話の声が聞き取りにくい","騒音環境が苦手","補聴器を使用している","ほとんど聞こえない","特にない"] },
+  { category:"C", q:"手・指（上肢）に関して、仕事に影響する困りごとはありますか？", type:"multicheck", opts:["細かい作業が難しい","キーボード・マウス操作が困難","重いものが持てない","片手しか使えない","手・腕が不自由","特にない"] },
+  { category:"C", q:"足・歩行（下肢）に関して、仕事に影響する困りごとはありますか？", type:"multicheck", opts:["長時間立っていられない","階段・段差が難しい","長距離の移動が難しい","車いすを使用している","義足を使用している","特にない"] },
+  { category:"C", q:"体の内部（心臓・腎臓・呼吸器・消化器など）に関して、仕事に影響する困りごとはありますか？", type:"multicheck", opts:["疲れやすい・スタミナがない","息切れしやすい","トイレに頻繁に行く必要がある","食事制限がある","免疫が低下している","特にない"] },
+  { category:"C", q:"言葉を話すこと・声に出すことに関して、仕事に影響する困りごとはありますか？", type:"choice", opts:["話すことが難しい（失語・吃音など）","声が出にくい","特にない"] },
+  { category:"C", q:"座って仕事をすることはできますか？", type:"choice", opts:["問題なくできる","座り続けるのは難しい（1〜2時間が限界）","座り仕事でも体に負担がかかる","状況による"] },
+  { category:"C", q:"パソコン・スマートフォンの操作は、どの程度できますか？", type:"choice", opts:["問題なく使える","ゆっくりであれば使える","補助ツールがあれば使える","難しい"] },
+  { category:"C", q:"通勤（移動）に関して、困りごとや制限はありますか？", type:"multicheck", opts:["長時間の移動が難しい","電車・バスの乗り降りが難しい","車の運転ができない","在宅でないと難しい","特にない"] },
+  { category:"D", q:"朝、何時頃に起きられそうですか？", type:"choice", opts:["5時台","6時台","7時台","8時台","9時台","10時以降","日によって大きく異なる"] },
+  { category:"D", q:"1週間のうち、何日くらい働けそうですか？", type:"choice", opts:["1日","2日","3日","4日","平日すべて（5日）","日数より時間単位で考えたい"] },
+  { category:"D", q:"【「時間単位で考えたい」を選んだ方へ】1日あたり、合計何時間くらい働けそうですか？", type:"choice", opts:["1〜2時間","3〜4時間","4〜5時間","6時間以上","日によって異なる"] },
+  { category:"D", q:"1日に継続して働ける時間はどのくらいですか？（休憩なしで）", type:"choice", opts:["30分以内","1時間程度","2〜3時間","4時間以上"] },
+  { category:"D", q:"体調が一番安定している時間帯はいつですか？", type:"choice", opts:["午前中（〜12時）","午後（12〜17時）","夕方以降（17時〜）","特にない・日による"] },
+  { category:"D", q:"休憩はどのくらいの頻度で取れると安心ですか？", type:"choice", opts:["30分ごと","1時間ごと","2時間ごと","午前・午後1回ずつ程度","特に気にしない"] },
+  { category:"B", q:"体調が悪くなったとき、あなたはどう対処しますか？", type:"choice", opts:["すぐに休む","周りに伝えて調整する","様子を見ながら続ける","状況による"] },
+  { category:"B", q:"仕事中に体調が急変した場合、どう動けそうですか？", type:"choice", opts:["自分で判断して離席できる","上司に伝えてから動く","あらかじめ職場に伝えておきたい","まだイメージできない"] },
+  { category:"B", q:"新しい仕事を始めるとき、体調面で一番心配なことは何ですか？", type:"choice", opts:["急な欠勤が増えること","自分の体力・限界がわからないこと","周囲に迷惑をかけること","どう説明すればいいかわからないこと"] },
+  { category:"B", q:"感情と体調、どちらが仕事に影響しやすいですか？", type:"choice", opts:["体調のほうが大きい","感情のほうが大きい","両方同じくらい","状況による"] },
+  { category:"A1", q:"体調を気にしながらでも「これならやれそう」と思える仕事のイメージはありますか？", type:"choice", opts:["ある","ぼんやりある","まったくわからない"] },
+  { category:"A1", q:"病気になる前、夢中になっていた仕事・活動・趣味はありますか？", type:"text" },
+  { category:"A1", q:"もし体の制限がまったくなかったとしたら、やってみたい仕事や活動はありますか？", type:"text" },
+  { category:"A5", q:"仕事を通じて、どんなことを感じたいですか？", type:"choice", opts:["誰かの役に立っている実感","成長している感覚","社会とつながっている感覚","収入を得ている安心感","特にない"] },
+  { category:"A5", q:"体のことを抱えながら働こうと思ったきっかけや、背中を押してくれたものはありますか？", type:"text" },
+  { category:"E", q:"体調に関係なく「自分はこれが得意」と思えることはありますか？（複数可）", type:"multicheck", opts:["丁寧な作業","人と話すこと","資料・文書作成","データ整理","教えること・伝えること","アイデアを出すこと","特に思いつかない"] },
+  { category:"E", q:"過去の仕事や経験で、「これは人より上手くできた」と感じたことはありますか？", type:"text" },
+  { category:"G", q:"1年後、どんな状態でいたいですか？", type:"choice", opts:["少しでも働けている","体調が安定している","収入が得られている","やりがいのある仕事に就いている","まだ想像できない"] },
+  { category:"G", q:"将来に向けて、今すでに取り組んでいることはありますか？", type:"choice", opts:["リハビリ・体力づくり","職業訓練・勉強","情報収集","支援機関への相談","特にない"] },
+  { category:"H1", q:"体調が辛くても「働きたい」と思う理由は何ですか？（一番近いもの）", type:"choice", opts:["経済的な理由","社会とつながっていたい","自分の存在価値を感じたい","家族のため","やりたいことがある","なんとなく動いていたい"] },
+  { category:"H1", q:"あなたが「諦めずにいられる」のはなぜだと思いますか？", type:"text" },
+  { category:"H2", q:"「これ以上は無理」と感じるのはどんなときですか？", type:"choice", opts:["体の痛みや疲労が限界のとき","周囲に迷惑をかけていると感じるとき","成果が出ないとき","感情的に追い詰められたとき","意味を感じられないとき"] },
+  { category:"H2", q:"仕事を辞めたい・休みたいと思うのはどんなときですか？", type:"choice", opts:["体調が急に悪化したとき","職場の理解が得られないとき","自分だけ遅れていると感じるとき","精神的に追い詰められたとき","あまり感じない"] },
+  { category:"H2", q:"自分の体調や限界を、職場の人に伝えることはできそうですか？", type:"choice", opts:["積極的に伝えたい","必要なときだけ伝えたい","できれば伝えたくない","どうすればいいかわからない"] },
+  { category:"I", q:"体調が悪化して仕事を続けられなくなったとき、どうしたいですか？", type:"choice", opts:["すぐ辞めて療養に専念する","休職して様子を見る","働き方を調整してもらいながら続ける","そのときに考える"] },
+  { category:"I", q:"今後また仕事に就くとしたら、まず何から始めたいですか？", type:"choice", opts:["短時間・短日数のアルバイトから","在宅・リモートワークから","就労移行支援などの機関を使ってから","いきなり正社員で挑戦したい","まだわからない"] },
+  { category:"J", q:"職場で自分の体調について誤解されたとき、どう対処できますか？", type:"choice", opts:["その場で丁寧に説明できる","後から落ち着いて話せる","書面・診断書で説明したい","うまく対応できるか自信がない","対応できない"] },
+  { category:"J", q:"【「うまく対応できるか自信がない」「対応できない」を選んだ方へ】\nどんな働き方が向いていると思いますか？", type:"choice", opts:["在宅・リモートワーク（対面を減らす）","同じような病気・障害を持つ人が多い職場","少人数の職場","個人で完結する仕事","まだわからない"] },
+  { category:"K", q:"体調管理のために、自分なりにやっていることはありますか？", type:"choice", opts:["睡眠・食事の管理","定期的な通院","運動・リハビリ","ストレス管理","特にない"] },
+  { category:"K", q:"仕事でわからないことが出てきたとき、どう動きますか？", type:"choice", opts:["まず自分で調べる","すぐ人に聞く","要点をまとめてから確認する","様子を見てから動く"] },
+  { category:"C", q:"会社にどのようなサポートがあると、安心して働けると思いますか？（複数可）", type:"multicheck", opts:["フレックス・時短勤務","在宅・リモートワーク可","通院休暇の取りやすさ","業務量の柔軟な調整","上司・同僚の理解","休憩スペースの確保","バリアフリー環境","情報保障（字幕・手話など）","その他"] },
+  { category:"C", q:"ここまでの選択肢に当てはまらない、体や病気による困りごと・不自由なことがあれば自由に教えてください。", type:"text" },
+  { category:"C", q:"あなたが働く上で「こんなサポートがあれば安心できる」と思うことを、自由に教えてください。（選択肢にないものも含めて）", type:"text" },
+  { category:"A5", q:"最後に、今の自分の状況や気持ちを自由に書いてください。AIへの一言でも構いません。", type:"text" },
+];
+
 const CAT_LABELS = {
   A1:'価値観 — 興味・関心', A3:'価値観 — 独自性', A4:'価値観 — 貢献',
   A5:'価値観 — 存在意義', B:'思考・行動パターン', C:'制約・環境',
@@ -719,7 +873,7 @@ let S = { concern:null, userType:null, questions:[], currentQ:0, answers:[], api
 /* ── SCREENS ── */
 function showScreen(id) {
   document.getElementById('screen-password').style.display = 'none';
-  ['screen-top','screen-question','screen-apikey','screen-result'].forEach(s =>
+  ['screen-top','screen-consent','screen-question','screen-apikey','screen-result'].forEach(s =>
     document.getElementById(s).classList.remove('active')
   );
   if (id === 'screen-password') {
@@ -779,8 +933,26 @@ function checkReady() {
   if (S.concern && S.userType) btn.classList.add('visible');
 }
 
+function startDiagnosis() {
+  // ①体のことが心配 → 同意画面を挟む
+  if (S.concern === 1) {
+    showScreen('screen-consent');
+  } else {
+    launchQuestions();
+  }
+}
+
+function consentYes() {
+  launchQuestions();
+}
+
+function consentNo() {
+  showScreen('screen-top');
+}
+
 /* ── QUESTIONS ── */
 function buildQuestions() {
+  if (S.concern === 1) return TYPE1_QUESTIONS;
   const config = SCENARIO_CONFIGS[S.concern];
   const qs = [];
   for (const [cat, count] of Object.entries(config.cats)) {
@@ -790,7 +962,7 @@ function buildQuestions() {
   return qs;
 }
 
-function startDiagnosis() {
+function launchQuestions() {
   S.questions = buildQuestions();
   S.currentQ = 0;
   S.answers = new Array(S.questions.length).fill(null);
@@ -890,7 +1062,7 @@ function enableNext(v) { document.getElementById('btn-next').disabled = !v; }
 
 function nextQ() {
   if (S.currentQ < S.questions.length - 1) { S.currentQ++; renderQ(); window.scrollTo({top:0,behavior:'smooth'}); }
-  else showScreen('screen-apikey');
+  else runAnalysis();
 }
 function prevQ() {
   if (S.currentQ > 0) { S.currentQ--; renderQ(); window.scrollTo({top:0,behavior:'smooth'}); }
@@ -904,17 +1076,9 @@ function toggleEye() {
 function apiBack() { showScreen('screen-question'); S.currentQ = S.questions.length-1; renderQ(); }
 
 /* ── ANALYSIS ── */
-async function runAnalysis() {
-  const key = document.getElementById('api-input').value.trim();
-  const errEl = document.getElementById('api-error');
-  if (!key.startsWith('sk-ant-')) {
-    errEl.textContent = 'APIキーは sk-ant- で始まります';
-    errEl.style.display = 'block';
-    return;
-  }
-  errEl.style.display = 'none';
-  S.apiKey = key;
+const API_KEY = "YOUR_API_KEY_HERE"; // ← ここにAPIキーを貼り付けてください
 
+async function runAnalysis() {
   showScreen('screen-result');
   document.getElementById('result-loading').style.display = 'block';
   document.getElementById('result-body').style.display = 'none';
@@ -965,7 +1129,7 @@ ${qaSummary}
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": S.apiKey,
+        "x-api-key": API_KEY,
         "anthropic-version": "2023-06-01",
         "anthropic-dangerous-direct-browser-access": "true",
       },
